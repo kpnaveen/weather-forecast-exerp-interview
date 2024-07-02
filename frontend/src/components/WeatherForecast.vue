@@ -2,7 +2,7 @@
   <div class="pt-8" v-if="weatherData?.current_weather">
     <h3 class="font-bold uppercase text-xl">Weather forecast for city</h3>
 
-    <section class="mt-4 w-3/4 m-auto grid grid-cols-5 border border-[#ccc]">
+    <section class="my-4 w-[60%] lg:w-[85%] max-w-[1280px] gap-4 lg:gap-0 m-auto grid lg:grid-cols-5 border-none md:border md:border-[#ccc]">
       <div class="weather-section">
         <h4>Time</h4>
         <div>
@@ -44,15 +44,15 @@
   @tailwind components;
   @layer components {
     .weather-section {
-      @apply border-r border-[#ccc]
+      @apply border lg:border-r border-[#ccc] flex items-center md:block
     }
 
     .weather-section h4 {
-      @apply p-4 border-b border-[#ccc] font-bold uppercase
+      @apply p-4 border-r md:border-0 lg:border-b border-[#ccc] font-bold uppercase flex-1
     }
 
     .weather-section > div {
-      @apply p-4
+      @apply p-4 flex-1
     }
   }
 
