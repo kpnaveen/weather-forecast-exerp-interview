@@ -1,4 +1,5 @@
-import WeatherService from '@/services/weather-service.service';
+import WeatherService, { ForecastModel } from '@/services/weather-service.service';
+import store from '@/store';
 import { Options, Vue } from 'vue-class-component';
 import { Inject } from 'vue-property-decorator';
 
@@ -11,16 +12,32 @@ export default class WeatherForecast extends Vue {
   @Inject('weatherService')
   public weatherService!: WeatherService;
 
+  unsubscribe: any;
+  weatherData: ForecastModel | null = null
    
   mounted() {
     // TODO - use the latitude and longitude from the search city component
     // TODO - display the weather forecast in the template
     // TODO - Error handling, if the API call fails we should display an error message
-    this.weatherService.getWeatherForecast(52.52, 13.419998).then((res) => {
-      console.log(res);
-    });
+    this.unsubscribe = store.subscribe((mutation, state) => {
+      console.log(mutation)
+      console.log(state)
+      if(mutation.type === "setSelectedPlace") {
+        const { lat, lng } = state.selectedPlace;
+        if(!lat || !lng) {
+          return
+        }
+        this.weatherService.getWeatherForecast(lat, lng).then((res) => {
+          console.log("API response", res);
+          this.weatherData = res
+        }).catch(err => console.log(err)) // handle error properly
+      }
+    })
   }
 
+  unmounted() {
+    this.unsubscribe();
+  }
 }
 
 
