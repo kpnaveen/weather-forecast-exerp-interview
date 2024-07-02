@@ -25,10 +25,14 @@ export default class WeatherForecast extends Vue {
         if(!lat || !lng) {
           return
         }
-        this.weatherService.getWeatherForecast(lat, lng).then((res) => {
-          console.log("API response", res);
+        this.weatherData = null;
+        store.dispatch("updateLoaderStatus", true)
+        this.weatherService.getWeatherForecast(lat, lng)
+        .then((res) => {
           this.weatherData = res
-        }).catch(err => console.log(err)) // handle error properly
+        })
+        .catch(err => console.log(err)) // handle error properly
+        .finally(() => store.dispatch("updateLoaderStatus", false))
       }
     })
   }

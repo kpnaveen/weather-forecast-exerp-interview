@@ -11,21 +11,31 @@ export default createStore({
     selectedPlace: {
       lat: null,
       lng: null,
-    }
+    },
+    showAppLoader: false
   },
   getters: {
     selectedPlace: (state) => {
       return state.selectedPlace
+    },
+    appLoader: (state) => {
+      return state.showAppLoader
     }
   },
   mutations: {
     setSelectedPlace: (state, payload) => {
       state.selectedPlace = payload
+    },
+    setLoaderState: (state, payload) => {
+      state.showAppLoader = payload
     }
   },
   actions: {
     updateSelectedPlace: (context, payload) => {
       context.commit("setSelectedPlace", payload)
+    },
+    updateLoaderStatus: (context, payload) => {
+      context.commit("setLoaderState", payload)
     }
   },
   modules: {
