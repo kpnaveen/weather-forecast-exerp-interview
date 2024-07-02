@@ -20,8 +20,6 @@ export default class WeatherForecast extends Vue {
     // TODO - display the weather forecast in the template
     // TODO - Error handling, if the API call fails we should display an error message
     this.unsubscribe = store.subscribe((mutation, state) => {
-      console.log(mutation)
-      console.log(state)
       if(mutation.type === "setSelectedPlace") {
         const { lat, lng } = state.selectedPlace;
         if(!lat || !lng) {
