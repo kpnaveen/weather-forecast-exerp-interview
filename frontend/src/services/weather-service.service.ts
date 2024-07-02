@@ -10,6 +10,13 @@ export interface ForecastModel {
       winddirection: number,
       weathercode: number,
       time: Date
+  },
+  current_weather_units: {
+    temperature: string,
+    windspeed: string,
+    winddirection: string,
+    weathercode: string,
+    time: string
   }
 }
 export default class WeatherService {
