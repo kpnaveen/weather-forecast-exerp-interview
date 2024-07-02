@@ -14,6 +14,18 @@ export default class SearchCity extends Vue {
       lat: place.geometry.location.lat(),
       lng: place.geometry.location.lng(),
     };
+    this.updatePlaceInStore()
+  }
+
+  handleMapClick(e: any) {
+    this.selectedPlace = {
+      lat: e.latLng.lat(),
+      lng: e.latLng.lng(),
+    }
+    this.updatePlaceInStore()
+  }
+
+  updatePlaceInStore() {
     store.dispatch("updateSelectedPlace", this.selectedPlace)
   }
 
