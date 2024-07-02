@@ -11,7 +11,6 @@ export default createStore({
     selectedPlace: {
       lat: null,
       lng: null,
-      test: process.env
     }
   },
   getters: {
