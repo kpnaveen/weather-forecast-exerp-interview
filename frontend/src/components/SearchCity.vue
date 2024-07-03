@@ -17,6 +17,7 @@
       @click="handleMapClick"
     >
       <GMapMarker
+        :key="selectedPlace.lat"
         :position="selectedPlace"
       />
     </GMapMap>
