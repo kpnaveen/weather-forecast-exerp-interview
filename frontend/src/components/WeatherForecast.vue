@@ -1,8 +1,8 @@
 <template>
-  <div class="pt-8" v-if="weatherData?.current_weather">
-    <h3 class="font-bold uppercase text-xl">Weather forecast for city</h3>
+  <div class="py-8" v-if="weatherData?.current_weather">
+    <h3 class="font-bold uppercase text-xl pb-4">Weather forecast for city</h3>
 
-    <section class="my-4 w-[60%] lg:w-[85%] max-w-[1280px] gap-4 lg:gap-0 m-auto grid lg:grid-cols-5 border-none md:border md:border-[#ccc]">
+    <section class="m-4 w-[90% ] sm:w-[60%] lg:w-[85%] max-w-[1280px] gap-4 lg:gap-0 sm:m-auto lg:grid lg:grid-cols-5 border-none md:border md:border-[#ccc]">
       <div class="weather-section">
         <h4>Time</h4>
         <div>
