@@ -1,3 +1,4 @@
+import { computed, ComputedRef } from 'vue';
 import { Options, Vue } from 'vue-class-component';
 import SearchCity from '@/components/SearchCity.vue';
 import WeatherForecast from '@/components/WeatherForecast.vue';
@@ -12,5 +13,5 @@ import store from '@/store';
   },
 })
 export default class HomeView extends Vue {
-  $store: any = store
+  loaderStatus: ComputedRef<boolean> = computed(() => store.getters.appLoader)
 }

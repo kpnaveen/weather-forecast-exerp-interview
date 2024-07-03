@@ -3,7 +3,7 @@
     <SearchCity />
     <WeatherForecast />
   </div>
-  <AppLoader v-if="$store.getters.appLoader">
+  <AppLoader v-if="loaderStatus">
     Fetching Weather Forecast...
   </AppLoader>
 </template>
