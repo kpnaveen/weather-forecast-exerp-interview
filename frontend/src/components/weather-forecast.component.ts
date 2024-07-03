@@ -13,7 +13,8 @@ export default class WeatherForecast extends Vue {
   public weatherService!: WeatherService;
 
   unsubscribe: any;
-  weatherData: ForecastModel | null = null
+  weatherData: ForecastModel | null = null;
+  error: string = ""
    
   mounted() {
     // TODO - use the latitude and longitude from the search city component
@@ -26,12 +27,15 @@ export default class WeatherForecast extends Vue {
           return
         }
         this.weatherData = null;
+        this.error = "";
         store.dispatch("updateLoaderStatus", true)
         this.weatherService.getWeatherForecast(lat, lng)
         .then((res) => {
           this.weatherData = res
         })
-        .catch(err => console.log(err)) // handle error properly
+        .catch(err => {
+          this.error = err.errorI18NMessage;
+        })
         .finally(() => store.dispatch("updateLoaderStatus", false))
       }
     })

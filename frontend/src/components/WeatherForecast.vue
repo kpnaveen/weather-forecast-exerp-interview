@@ -36,6 +36,9 @@
     </section>
     
   </div>
+  <div v-if="error" class="py-8 text-red-300 text-xl">
+    Could not fetch weather forecast. Please try again later
+  </div>
 </template>
 
 <script lang="ts" src="./weather-forecast.component.ts"></script>
