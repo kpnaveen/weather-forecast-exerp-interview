@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>Type a city name to search</h3>
-    <div class="w-2/5 m-auto">
+    <div class="w-[90%] md:w-3/4 lg:w-[50%] xl:w-2/5 m-auto">
       <GMapAutocomplete @place_changed="placeChanged" class="gmap-autocompolete"/>
     </div>
 
