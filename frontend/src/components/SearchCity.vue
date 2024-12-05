@@ -1,9 +1,11 @@
 <template>
   <div>
     <h3>Type a city name to search</h3>
-    <GMapAutocomplete @place_changed="placeChanged" class="gmap-autocompolete"/>
+    <div class="w-[90%] md:w-3/4 lg:w-[50%] xl:w-2/5 m-auto">
+      <GMapAutocomplete @place_changed="placeChanged" class="gmap-autocompolete"/>
+    </div>
 
-    <div>You can also click a location on the map to view the weather forecast</div>
+    <div v-if="selectedPlace" class="my-4">You can also click a location on the map to view the weather forecast</div>
     <!-- TODO add click event -->
     <GMapMap
       v-if="selectedPlace"
@@ -12,7 +14,12 @@
       :zoom="7"
       map-type-id="roadmap"
       ref="gmap"
+      @click="handleMapClick"
     >
+      <GMapMarker
+        :key="selectedPlace.lat"
+        :position="selectedPlace"
+      />
     </GMapMap>
   </div>
 </template>
